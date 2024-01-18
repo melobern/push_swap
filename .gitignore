@@ -10,3 +10,5 @@
 main.c
 a.out
 archives
+push_swap
+ft_printf
