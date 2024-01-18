@@ -1,0 +1,12 @@
+*~
+*.swp
+*.o
+*.a
+*.gch
+*Tester
+.dep
+.objs
+.vscode
+main.c
+a.out
+archives
