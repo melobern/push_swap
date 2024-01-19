@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:50:07 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/19 10:38:39 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:52:57 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_isspace(int n)
 	return ((n > 8 && n < 14) || n == 32);
 }
 
-int	ft_search_char(char letter, char *charset) MAYBE NOT USEFUL HERE
+int	ft_search_char(char letter, char *charset)
 {
 	int	c;
 
