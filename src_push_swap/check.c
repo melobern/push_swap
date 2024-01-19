@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 08:36:17 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/18 13:03:21 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:06:33 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,17 @@ static int	ft_check_doubles(char **av)
 
 void	ft_check_arg(int ac, char **av)
 {
-	if (ac < 2)
-		exit(EXIT_FAILURE);
-	if (ft_check_isnum(av) == 0)
+	if (av == 2)
+		ft_one_arg_check(av[1]);
+	else if (av > 2)
 	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
+		if (ft_check_isnum(av) == 0)
+			ft_perror();
+		if (ft_check_doubles(av) == 0)
+			ft_perror();
+		if (ft_check_overflow(av) == 0)
+			ft_perror();
 	}
-	if (ft_check_doubles(av) == 0)
-	{
-		write(2, "Error\n", 6);
+	else
 		exit(EXIT_FAILURE);
-	}
-	if (ft_check_overflow(av) == 0)
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
 }

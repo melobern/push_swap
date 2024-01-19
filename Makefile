@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2023/11/30 15:24:02 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/19 09:54:57 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = push_swap	check	
+SRCS = utils	one_arg_check	push_swap	check	
 
 # ---------------------------------- Repertories ----------------------------- #
 SRCS_DIR = src_push_swap/
