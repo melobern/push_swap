@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:43:21 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/21 19:45:06 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:16:12 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_one_arg_check(char *av)
 	}
 	if (ft_check_overflow(args) == 0)
 	{
-		ft_free_tab(args);
+	//	ft_free_tab(args);
 		ft_perror();
 	}
 	ft_free_tab(args);
