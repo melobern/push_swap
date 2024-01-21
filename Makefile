@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/19 09:54:57 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/21 18:04:13 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,17 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = utils	one_arg_check	push_swap	check	
+SRCS = utils	one_arg_check	push_swap	check	ft_split_set	\
+#
+#//       swap	number_list
 
 # ---------------------------------- Repertories ----------------------------- #
 SRCS_DIR = src_push_swap/
 OBJS_DIR = .objs/
+:q
+:q
+:q
+:quitall
 LIBFT_DIR = Libft/
 HEADER_DIR = header/
 INCLUDES = -I ${HEADER_DIR}
