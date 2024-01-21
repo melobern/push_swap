@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:43:21 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/21 17:57:21 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:45:06 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_fill_spaces(char *str)
 void	ft_one_arg_check(char *av)
 {
 	char	**args;
-	char	spaces[6];
+	char	spaces[7];
 
 	ft_fill_spaces(spaces);
 	args = ft_split_set(av, spaces);
