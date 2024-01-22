@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:43:21 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/21 20:16:12 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:21:38 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_one_arg_check(char *av)
 
 	ft_fill_spaces(spaces);
 	args = ft_split_set(av, spaces);
+	if (!args)
+		return ;
 	if (ft_check_isnum(args) == 0)
 	{
 		ft_free_tab(args);
@@ -48,19 +50,8 @@ void	ft_one_arg_check(char *av)
 	}
 	if (ft_check_overflow(args) == 0)
 	{
-	//	ft_free_tab(args);
+		ft_free_tab(args);
 		ft_perror();
 	}
 	ft_free_tab(args);
 }
-	/*
-	if (!ft_isdigit(av[0]) && !ft_search_char(av[0], " -"))
-		ft_perror();
-	while (++x < len)
-	{
-		if (!ft_isdigit(av[x]) && !ft_isspace(av[x - 1]))
-			ft_perror();
-		if (!ft_isdigit(av[x]) && !ft_search_char(av[x], " -"))
-			ft_perror();
-	}
-	*/

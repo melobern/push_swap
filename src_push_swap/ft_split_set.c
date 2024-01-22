@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 09:47:37 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/21 20:18:54 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:30:23 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+	tab = NULL;
 }
 
 char	**ft_split_set(char const *s, char *tokens)
@@ -74,12 +75,11 @@ char	**ft_split_set(char const *s, char *tokens)
 	int		i;
 	int		cursor;
 
-	len_tab = ft_len_tab(s, tokens + 1);
+	len_tab = ft_len_tab(s, tokens);
 	tab = (char **)malloc(sizeof(char *) * (len_tab + 1));
 	if (!tab)
 		return (NULL);
-	i = 1;
-	tab[0] = ft_substr("program", 0, 7);
+	i = 0;
 	cursor = 0;
 	while (i < len_tab)
 	{
