@@ -6,13 +6,13 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:19 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/18 10:04:36 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:07:23 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list *a, t_list *b)
+void	swap(t_nodes_list *a, t_nodes_list *b)
 {
 	int	tmp;
 
@@ -21,9 +21,9 @@ void	swap(t_list *a, t_list *b)
 	*(b->content) = tmp;
 }
 
-void	ft_free_list(t_list *li)
+void	ft_free_list(t_nodes_list *li)
 {
-	t_list	*tmp;
+	t_nodes_list	*tmp;
 
 	while (li != NULL)
 	{
@@ -33,7 +33,7 @@ void	ft_free_list(t_list *li)
 	}
 }
 
-int	list_is_sorted(t_list *li)
+int	list_is_sorted(t_nodes_list *li)
 {
 	while (li->next != NULL)
 	{
@@ -44,11 +44,11 @@ int	list_is_sorted(t_list *li)
 	return (1);
 }
 
-t_list	*ft_add_num(int number)
+t_nodes_list	*ft_add_num(int number)
 {
-	t_list	*new;
+	t_nodes_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = (t_nodes_list *)malloc(sizeof(t_nodes_list));
 	if (!new)
 		return (NULL);
 	new->content = (int *)malloc(sizeof(int));
