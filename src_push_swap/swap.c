@@ -6,13 +6,13 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:55:45 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/18 08:34:43 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:24:19 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*sa(t_list pile_a)
+char	*sa(t_list *pile_a)
 {
 	int	tmp;
 
@@ -22,7 +22,7 @@ char	*sa(t_list pile_a)
 	return ("sa");
 }
 
-char	*sb(t_list pile_b)
+char	*sb(t_list *pile_b)
 {
 	int	tmp;
 
@@ -38,7 +38,7 @@ char	*sb(t_list pile_b)
 	return ("sb");
 }
 
-char	*ss(t_list pile_a, t_list pile_b)
+char	*ss(t_list *pile_a, t_list *pile_b)
 {
 	if (*pile_a == NULL || *pile_b == NULL)
 		return (NULL);
