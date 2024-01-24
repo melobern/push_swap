@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:50:07 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/19 10:52:57 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:01:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ int	ft_search_char(char letter, char *charset)
 		}
 	}
 	return (0);
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

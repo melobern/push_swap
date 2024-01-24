@@ -6,22 +6,21 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/23 13:39:21 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/24 14:41:27 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 JUSTC="\n NO FSANITIZE HERE ! DON'T FORGET TO CUT THE CRAP FROM MAKEFILE !\n"
 FSAN="\n\n\nOOOH ! It seems you're FSANITIZING again !\n"
-#CC = echo ${JUSTC} && cc
-CC = echo ${FSAN} && cc -fsanitize=address -g3
+CC = echo ${JUSTC} && cc -g3
+#CC = echo ${FSAN} && cc -fsanitize=address -g3
 CFLAGS = -Wall -Wextra -Werror -MMD -MP 
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
 SRCS = utils	one_arg_check	push_swap	check	ft_split_set	\
-	number_list 
-#	swap
+	number_list	swap
 
 # ---------------------------------- Repertories ----------------------------- #
 SRCS_DIR = src_push_swap/

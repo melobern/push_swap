@@ -6,13 +6,13 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:43:21 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/22 12:21:38 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:44:47 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_fill_spaces(char *str)
+void	ft_fill_spaces(char *str)
 {
 	int	x;
 	int	space;
