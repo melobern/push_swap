@@ -6,23 +6,21 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:55:45 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/23 13:24:19 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:03:14 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*sa(t_list *pile_a)
+char	*sa(t_nodes_list **pile_a)
 {
-	int	tmp;
-
-	if (*pile_a == NULL || *pile_a->next == NULL)
+	if (*pile_a == NULL || (*pile_a)->next == NULL)
 		return (NULL);
-	swap(pile_a, pile_a->next);
+	ft_swap(&((*pile_a)->value), &((*pile_a)->next->value));
 	return ("sa");
 }
-
-char	*sb(t_list *pile_b)
+/*
+char	*sb(t_nodes_list **pile_b)
 {
 	int	tmp;
 
@@ -34,11 +32,11 @@ char	*sb(t_list *pile_b)
 		pile_b = pile_b->next;
 		tmp = pile_b->next;
 	}
-	swap(tmp, pile_b->next);
+	ft_swap(tmp, pile_b->next);
 	return ("sb");
 }
 
-char	*ss(t_list *pile_a, t_list *pile_b)
+char	*ss(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (*pile_a == NULL || *pile_b == NULL)
 		return (NULL);
@@ -46,10 +44,11 @@ char	*ss(t_list *pile_a, t_list *pile_b)
 	sb(pile_b);
 	return ("ss");
 }
+*/
 /*
-sa(swap a) : Intervertit les 2 premiers éléments au sommet de la pile a.
+sa(ft_swap a) : Intervertit les 2 premiers éléments au sommet de la pile a.
 Ne fait rien s’il n’y en a qu’un ou aucun.
-sb(swap b) : Intervertit les 2 premiers éléments au sommet de la pile b.
+sb(ft_swap b) : Intervertit les 2 premiers éléments au sommet de la pile b.
 Ne fait rien s’il n’y en a qu’un ou aucun.
 ss : sa et sb en même temps
 */
