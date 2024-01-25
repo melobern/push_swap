@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:55:45 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/24 14:03:14 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:58:29 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,16 @@ char	*sa(t_nodes_list **pile_a)
 	ft_swap(&((*pile_a)->value), &((*pile_a)->next->value));
 	return ("sa");
 }
-/*
+
 char	*sb(t_nodes_list **pile_b)
 {
-	int	tmp;
-
-	if (*pile_b == NULL || *pile_b->next == NULL)
+	if (*pile_b == NULL || (*pile_b)->next == NULL)
 		return (NULL);
-	tmp = pile_b->next;
-	while (tmp != NULL)
-	{
-		pile_b = pile_b->next;
-		tmp = pile_b->next;
-	}
-	ft_swap(tmp, pile_b->next);
+	ft_swap(&((*pile_b)->value), &((*pile_b)->next->value));
 	return ("sb");
 }
 
+/*
 char	*ss(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (*pile_a == NULL || *pile_b == NULL)

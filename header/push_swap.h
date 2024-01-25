@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/24 15:44:47 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:48:46 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ void	ft_swap(int *a, int *b);
 char	*sa(t_nodes_list **pile_a);
 char	*sb(t_nodes_list **pile_b);
 char	*ss(t_nodes_list **pile_a, t_nodes_list **pile_b);
+char	*pa(t_nodes_list **pile_a, t_nodes_list **pile_b);
+char	*pb(t_nodes_list **pile_b, t_nodes_list **pile_a);
+char	*ra(t_nodes_list **pile_a);
+char	*rb(t_nodes_list **pile_b);
+char	*rr(t_nodes_list **pile_a, t_nodes_list **pile_b);
+char	*rra(t_nodes_list **pile_a);
+char	*rrb(t_nodes_list **pile_b);
+char	*rrr(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
 ////////			SORT			////////
 ////////////////////////////////////////////////////////////////
