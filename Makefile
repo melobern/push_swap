@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/25 12:30:01 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/25 13:56:12 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = utils	one_arg_check	push_swap	check	ft_split_set	\
-       fill_pile	number_list	swap	push_rotate		\
+SRCS = utils	one_arg_check	push_swap	check	ft_split_set	fill_pile	number_list	swap	push_rotate		\
        sort_three	reverse_r	\
        PROUT_PROUT #TO REMOVE OBVIOUSLY LOLOL
 
