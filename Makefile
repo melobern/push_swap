@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/25 09:57:40 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/25 10:49:36 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = utils	one_arg_check	push_swap	check	ft_split_set	number_list	swap
+SRCS = utils	one_arg_check	push_swap	check	ft_split_set	\
+       fill_pile	number_list	swap
 
 # ---------------------------------- Repertories ----------------------------- #
 SRCS_DIR = src_push_swap/
