@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 08:36:17 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/24 14:34:43 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:21:52 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_skip_zeros(int num, char *str)
 		while (str[zeros] && str[zeros] == '0')
 			zeros++;
 		if (!str[zeros])
-			zeros--;	
+			zeros--;
 	}
 	return (zeros);
 }

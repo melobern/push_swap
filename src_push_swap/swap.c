@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:55:45 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/25 11:58:29 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:35:58 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*sb(t_nodes_list **pile_b)
 	return ("sb");
 }
 
-/*
 char	*ss(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (*pile_a == NULL || *pile_b == NULL)
@@ -37,7 +36,6 @@ char	*ss(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	sb(pile_b);
 	return ("ss");
 }
-*/
 /*
 sa(ft_swap a) : Intervertit les 2 premiers éléments au sommet de la pile a.
 Ne fait rien s’il n’y en a qu’un ou aucun.

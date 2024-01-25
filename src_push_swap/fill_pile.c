@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:48:14 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/25 14:00:11 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:21:24 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	fill_pile(t_nodes_list **pile, char **av)
 	t_nodes_list	*start;
 	int				x;
 	int				there_is_malloc;
-
 
 	x = 0;
 	there_is_malloc = 0;

@@ -6,22 +6,25 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:02:42 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/16 15:56:52 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:23:05 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+/*
 typedef struct s_list
 {
-	int					value;
+	int				value;
 	struct s_list	*next;
-}						t_list;
+}					t_list;
+*/
 
 void	ft_free_list(t_list *li)
 {
 	t_list	*tmp;
+
 	while (li != NULL)
 	{
 		tmp = li->next;
