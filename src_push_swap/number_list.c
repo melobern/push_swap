@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:19 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/24 15:48:21 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:40:35 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,36 +76,33 @@ t_nodes_list	*add_num(int number, int index, t_nodes_list *prev_l)
 	return (new);
 }
 
-void	one_arg_fill(t_nodes_list **pile, char *av)
-{
-	char	**args;
-	char	spaces[7];
-
-	ft_fill_spaces(spaces);
-	args = ft_split_set(av, spaces);
-	if (args)
-		ft_fill_pile(pile, args);
-}
-
 void	fill_pile(t_nodes_list **pile, char **av)
 {
-	t_nodes_list	*tmp;
 	t_nodes_list	*start;
 	int				x;
+	int				there_is_malloc;
+	char	spaces[7];
+
 
 	x = 0;
+	there_is_malloc = 0;
 	if (!av[1])
-		av = ft_split_set(av, );
+	{
+		ft_fill_spaces(spaces);
+		av = ft_split_set(av[0], spaces);
+		there_is_malloc = 1;
+	}
 	*pile = add_num(ft_atoi(av[0]), 0, 0);
 	start = *pile;
 	while (av[++x])
 	{
-		tmp = *pile;
 		(*pile)->next = add_num(ft_atoi(av[x]), x, *pile);
+		(*pile)->next->prev = *pile;
 		*pile = (*pile)->next;
-		(*pile)->prev = tmp;
 	}
 	*pile = start;
+	if (there_is_malloc)
+		ft_free_tab(av);
 }
 
 void	show_pile(t_nodes_list **pile)

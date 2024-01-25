@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/24 14:41:27 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/25 09:57:40 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = utils	one_arg_check	push_swap	check	ft_split_set	\
-	number_list	swap
+SRCS = utils	one_arg_check	push_swap	check	ft_split_set	number_list	swap
 
 # ---------------------------------- Repertories ----------------------------- #
 SRCS_DIR = src_push_swap/
@@ -28,18 +27,19 @@ OBJS_DIR = .objs/
 LIBFT_DIR = Libft/
 HEADER_DIR = header/
 INCLUDES = -I ${HEADER_DIR}
-DEPS = ${SRCS_DIR%.c:OBJS_DIR%.d}
-
+DEPS = ${${SRCS_DIR}%.c:${OBJS_DIR}%.d}
 # ---------------------------------- Addpredix and suffix -------------------- #
 LIBFT = $(addprefix ${LIBFT_DIR}, libft.a)
 HEADER = $(addprefix ${HEADER_DIR}, push_swap.h)
 OBJS = $(addprefix ${OBJS_DIR}, $(addsuffix .o, ${SRCS}))
  
 # ---------------------------------- Compilation ----------------------------- #
-all: libs ${NAME}
+all:	${NAME}
 
-libs :
+libs:
 	$(MAKE) -C ${LIBFT_DIR}
+
+${LIBFT}: libs
 
 ${NAME}: ${OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o $@
