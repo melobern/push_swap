@@ -6,15 +6,15 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/25 14:39:07 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/26 10:41:12 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 JUSTC="\n NO FSANITIZE HERE ! DON'T FORGET TO CUT THE CRAP FROM MAKEFILE !\n"
 FSAN="\n\n\nOOOH ! It seems you're FSANITIZING again !\n"
-#CC = echo ${JUSTC} && cc -g3
-CC = echo ${FSAN} && cc -fsanitize=address -g3
+CC = echo ${JUSTC} && cc -g3
+#CC = echo ${FSAN} && cc -fsanitize=address -g3
 CFLAGS = -Wall -Wextra -Werror -MMD -MP 
 RM = rm -f
 RMDIR = rm -rf
