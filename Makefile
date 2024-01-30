@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/26 10:41:12 by mbernard         ###   ########.fr        #
+#    Updated: 2024/01/30 16:32:36 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,23 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p
-SRCS = utils	one_arg_check	push_swap	check	ft_split_set	fill_pile	number_list	swap	push_rotate		\
-       sort_three	reverse_r	\
+
+# ---------------------------------- Sources ----------------------------------#
+vpath %.c src src/checking	src/commands	src/sort	src/utils
+
+SRCS = push_swap							\
+       swap	push	rotate	reverse					\
+       utils	list_utils	check	one_arg_check	ft_split_set	\
+       fill_pile	sort_three	sort_utils			\
+       push_into_b	\
        PROUT_PROUT #TO REMOVE OBVIOUSLY LOLOL
 
 # ---------------------------------- Repertories ----------------------------- #
-SRCS_DIR = src_push_swap/
 OBJS_DIR = .objs/
 LIBFT_DIR = Libft/
 HEADER_DIR = header/
 INCLUDES = -I ${HEADER_DIR}
-DEPS = ${${SRCS_DIR}%.c:${OBJS_DIR}%.d}
+DEPS = ${OBJS:.o=.d}
 # ---------------------------------- Addpredix and suffix -------------------- #
 LIBFT = $(addprefix ${LIBFT_DIR}, libft.a)
 HEADER = $(addprefix ${HEADER_DIR}, push_swap.h)
@@ -46,7 +52,7 @@ ${LIBFT}: libs
 ${NAME}: ${OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o $@
 
-${OBJS_DIR}%.o: ${SRCS_DIR}%.c ${HEADER} | ${OBJS_DIR}
+${OBJS_DIR}%.o: %.c ${HEADER} | ${OBJS_DIR}
 	${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 
 -include ${DEPS}
@@ -58,9 +64,11 @@ ${OBJS_DIR}:
 # ---------------------------------- Clean ----------------------------------- #
 clean:
 	${RMDIR} ${OBJS_DIR}
+	${MAKE} clean -C $(LIBFT_DIR)
 
 fclean: clean
 	${RM} ${NAME}
+	${RM} ${LIBFT}
 
 re:    fclean
 	${MAKE} ${NAME}
