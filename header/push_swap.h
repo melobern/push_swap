@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/25 14:37:53 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:44:53 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_nodes_list
 	int					value;
 	int					index;
 	int					cost;
-	int					above_median;
+	int					top_three;
 	int					cheapest;
 	struct s_nodes_list	*target;
 	struct s_nodes_list	*next;
@@ -70,14 +70,21 @@ char		*rrr(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////			SORT			////////
 ////////////////////////////////////////////////////////////////
 int			pile_sorted(t_nodes_list **pile);
+int			pile_rev_sorted(t_nodes_list **pile);
+int			is_min(int num, t_nodes_list **pile);
+int			is_max(int num, t_nodes_list **pile);
 void		sort_three(t_nodes_list **pile);
+void		sort_three_b(t_nodes_list **pile);
 void		push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b);
+void		push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
 ////////			LIST			////////
 ////////////////////////////////////////////////////////////////
 void		fill_pile(t_nodes_list **pile, char **av);
 void		free_pile(t_nodes_list **pile);
 size_t		pile_len(t_nodes_list **pile);
+int	is_top_three(t_nodes_list *pile);
+void	search_top_three(t_nodes_list **pile);
 
 #endif
 
