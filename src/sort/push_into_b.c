@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 17:45:47 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:12:48 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,14 @@ void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (!(*pile_a))
 		return ;
+	search_top_three(pile_a);
 	while ((*pile_a)->next->next->next != NULL)
 	{
 		if (is_top_three(*pile_a))
 			ra(pile_a);
-		else if (is_max(((*pile_a)->value), pile_b))
+		else if (is_max((*pile_a)->value, pile_b))
 			pb(pile_b, pile_a);
-		else if (is_min(((*pile_a)->value), pile_b))
+		else if (is_min((*pile_a)->value, pile_b))
 		{
 			ft_putendl_fd(pb(pile_b, pile_a), 1);
 			ft_putendl_fd(rb(pile_b), 1);

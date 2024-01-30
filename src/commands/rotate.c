@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:40:35 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 17:42:48 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:45:44 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	rotate(t_nodes_list **pile)
 		return ;
 	while (tmp->next != NULL)
 	{
-		ft_swap(&(tmp->value), &(tmp->next->value));
-		ft_swap(&(tmp->top_three), &(tmp->next->top_three));
+		ft_swap_node(tmp, tmp->next);
 		tmp = tmp->next;
 	}
 }
