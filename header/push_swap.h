@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 17:44:53 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:34:27 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		ft_check_arg(int ac, char **av);
 ////////			COMMANDS		////////
 ////////////////////////////////////////////////////////////////
 void		ft_swap(int *a, int *b);
+void		ft_swap_node(t_nodes_list *a, t_nodes_list *b);
 char		*sa(t_nodes_list **pile_a);
 char		*sb(t_nodes_list **pile_b);
 char		*ss(t_nodes_list **pile_a, t_nodes_list **pile_b);
@@ -71,6 +72,7 @@ char		*rrr(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
 int			pile_sorted(t_nodes_list **pile);
 int			pile_rev_sorted(t_nodes_list **pile);
+int			is_top_three(t_nodes_list *pile);
 int			is_min(int num, t_nodes_list **pile);
 int			is_max(int num, t_nodes_list **pile);
 void		sort_three(t_nodes_list **pile);
@@ -83,8 +85,7 @@ void		push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b);
 void		fill_pile(t_nodes_list **pile, char **av);
 void		free_pile(t_nodes_list **pile);
 size_t		pile_len(t_nodes_list **pile);
-int	is_top_three(t_nodes_list *pile);
-void	search_top_three(t_nodes_list **pile);
+void		search_top_three(t_nodes_list **pile);
 
 #endif
 

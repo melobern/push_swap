@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 08:36:17 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/26 10:38:26 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:04:51 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_check_overflow(char **av)
 		}
 		if (ft_strncmp(copy, av[x] + zeros, ft_strlen(av[x])) != 0)
 			return (free(copy), 0);
-		if (num < 0)
+		if (num < 0 && av[x][zeros - 1])
 			av[x][zeros] = '0';
 		free(copy);
 		x++;
