@@ -6,11 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/01/30 19:54:25 by mbernard         ###   ########.fr       */
-=======
-/*   Updated: 2024/01/31 13:30:37 by mbernard         ###   ########.fr       */
->>>>>>> 5abb3a654772fffb3fe9444b1194f0b03df99ab7
+/*   Updated: 2024/02/01 11:55:21 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +42,7 @@ static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	if (position < 3)
 	{
 		ft_putendl_fd(pb(pile_b, pile_a), 1);
-		sort_three_b(pile_b);
+		sort_rev_three(pile_b);
 	}
 	else
 	{

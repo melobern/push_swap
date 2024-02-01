@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:48:14 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/31 13:30:30 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:46:38 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_nodes_list	*add_num(int number, int index, t_nodes_list *prev_l)
 	new->value = number;
 	new->index = index;
 	new->top_three = 0;
+	new->is_min = 0;
+	new->is_max = 0;
 	new->next = NULL;
 	if (prev_l)
 		new->prev = prev_l;
@@ -42,13 +44,13 @@ static char	**fill_one_arg(char *av)
 	return (args);
 }
 
-void	fill_pile(t_nodes_list **pile, char **av)
+size_t	fill_pile(t_nodes_list **pile, char **av)
 {
 	t_nodes_list	*start;
-	int				x;
-	int				there_is_malloc;
+	size_t			len;
+	size_t			there_is_malloc;
 
-	x = 0;
+	len = 0;
 	there_is_malloc = 0;
 	if (!av[1])
 	{
@@ -57,14 +59,15 @@ void	fill_pile(t_nodes_list **pile, char **av)
 	}
 	*pile = add_num(ft_atoi(av[0]), 0, 0);
 	start = *pile;
-	while (av[++x])
+	while (av[++len])
 	{
-		(*pile)->next = add_num(ft_atoi(av[x]), x, *pile);
+		(*pile)->next = add_num(ft_atoi(av[len]), len, *pile);
 		(*pile)->next->prev = *pile;
 		*pile = (*pile)->next;
 	}
 	*pile = start;
-	search_top_three(pile_a);
 	if (there_is_malloc)
 		ft_free_tab(av);
+	assign_nodes(pile_a, len);
+	return (len);
 }

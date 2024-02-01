@@ -6,13 +6,13 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:24:24 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 15:19:54 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:41:01 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three_b(t_nodes_list **pile)
+void	sort_rev_three(t_nodes_list **pile)
 {
 	int	one;
 	int	two;
