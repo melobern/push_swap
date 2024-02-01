@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 19:12:48 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:54:25 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	x = b_len / 2 - 1;
 	if (position < 3)
 	{
-		pb(pile_b, pile_a);
+		ft_putendl_fd(pb(pile_b, pile_a), 1);
 		sort_three_b(pile_b);
 	}
 	else
@@ -49,9 +49,9 @@ static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
 		while (x > 0)
 		{
 			if (position > b_len / 2)
-				rrb(pile_b);
+				ft_putendl_fd(rrb(pile_b), 1);
 			else
-				rb(pile_b);
+				ft_putendl_fd(rb(pile_b), 1);
 			x--;
 		}
 		pb(pile_b, pile_a);
@@ -62,12 +62,10 @@ static void	push_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (!(*pile_b))
 		return ;
-	ft_putendl_fd("PILE B SHOWTIME !", 1);
-	show_pile(pile_b); ////
 	while (*pile_b)
-		pa(pile_a, pile_b);
+		ft_putendl_fd(pa(pile_a, pile_b), 1);
 	while (!pile_sorted(pile_a))
-		ra(pile_a);
+		ft_putendl_fd(ra(pile_a), 1);
 }
 
 void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
@@ -78,9 +76,9 @@ void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	while ((*pile_a)->next->next->next != NULL)
 	{
 		if (is_top_three(*pile_a))
-			ra(pile_a);
+			ft_putendl_fd(ra(pile_a),1);
 		else if (is_max((*pile_a)->value, pile_b))
-			pb(pile_b, pile_a);
+			ft_putendl_fd(pb(pile_b, pile_a), 1);
 		else if (is_min((*pile_a)->value, pile_b))
 		{
 			ft_putendl_fd(pb(pile_b, pile_a), 1);

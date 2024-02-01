@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 13:45:05 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:41:36 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	main(int ac, char **av)
 	pile_a = NULL;
 	pile_b = NULL;
 	fill_pile(&pile_a, av + 1);
-	// TO SUPPRESS IN THE END	////////////////////
+	/* TO SUPPRESS IN THE END	////////////////////
 	if (pile_a == NULL || pile_a->next == NULL)	////
 	{						////
 		free_pile(&pile_a);			////
 		return (0);				////
 	}						////
-	// TO SUPPRESS IN THE END	////////////////////
+	*/ // TO SUPPRESS IN THE END	////////////////////
 	if (!pile_sorted(&pile_a))
 	{
 		if (pile_len(&pile_a) == 2)
@@ -42,12 +42,12 @@ int	main(int ac, char **av)
 		else
 			push_swap(&pile_a, &pile_b);
 	}
-	// CRAPPY TESTS		////////////////////
+	/* CRAPPY TESTS		////////////////////
 	ft_putendl_fd("PILE A !", 1);		////
 	show_pile(&pile_a);			////
 	ft_putendl_fd("PILE B !", 1);		////
 	show_pile(&pile_b);			////
-	// CRAPPY TESTS		////////////////////
+	*///* */		////////////////////
 	free_pile(&pile_a);
 	free_pile(&pile_b);
 	return (0);
