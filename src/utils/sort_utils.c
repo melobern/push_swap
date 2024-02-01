@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:30:50 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 18:53:12 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/01 13:54:26 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,6 @@ int	is_max(int num, t_nodes_list **pile)
 
 int	is_top_three(t_nodes_list *pile)
 {
-	if (pile->top_three == 1)
-		return (1);
-	return (0);
+	return (pile->top_three == 1);
 }
 
-void	search_top_three(t_nodes_list **pile)
-{
-	int				bigger_nums;
-	t_nodes_list	*tmp;
-	t_nodes_list	*num;
-
-	tmp = *pile;
-	num = *pile;
-	while (num)
-	{
-		tmp = *pile;
-		bigger_nums = 0;
-		while (tmp)
-		{
-			if (num->value < tmp->value)
-				bigger_nums++;
-			tmp = tmp->next;
-		}
-		if (bigger_nums < 3)
-			num->top_three = 1;
-		num = num->next;
-	}
-}

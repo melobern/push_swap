@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/01/30 16:32:36 by mbernard         ###   ########.fr        #
+#    Updated: 2024/02/01 14:10:00 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ vpath %.c src src/checking	src/commands	src/sort	src/utils
 SRCS = push_swap							\
        swap	push	rotate	reverse					\
        utils	list_utils	check	one_arg_check	ft_split_set	\
-       fill_pile	sort_three	sort_utils			\
+       fill_pile	sort_utils					\
+       sort_three	sort_rev_three	three_fisrt_to_sort		\
+       search_assign							\
        push_into_b	\
        PROUT_PROUT #TO REMOVE OBVIOUSLY LOLOL
 
