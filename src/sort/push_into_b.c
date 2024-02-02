@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 14:59:44 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:16:21 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static size_t	pos_node(int num, t_nodes_list **pile_b)
 			position++;
 		b = b->next;
 	}
+	printf("Position de %i est %li\n", num, position);
 	return (position);
 }
 
@@ -39,13 +40,21 @@ static void	move_position(t_nodes_list **pile_a, t_nodes_list **pile_b, size_t l
 	x = position;
 	while (position > 0 && x > 0 && len > 1)
 	{
-		if (position <= len / 2)
-			ft_putendl_fd(rrb(pile_b), 1);
-		else
+	show_pile(pile_b);           ////
+		if (position < len - position)
 			ft_putendl_fd(rb(pile_b), 1);
+		else
+		{
+			len = len - position;
+			while (len--)
+				ft_putendl_fd(rrb(pile_b), 1);
+			ft_putendl_fd("prout", 1);
+		}
 		x--;
+	show_pile(pile_b);           ////
 	}
 	ft_putendl_fd(pb(pile_b, pile_a), 1);
+	show_pile(pile_b);           ////
 }
 
 static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
