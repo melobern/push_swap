@@ -6,59 +6,66 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/01 11:55:21 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:59:44 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	pos_node(t_nodes_list **pile_a, t_nodes_list **pile_b)
+static size_t	pos_node(int num, t_nodes_list **pile_b)
 {
-	t_nodes_list	*tmp;
+	t_nodes_list	*b;
 	size_t			position;
 
-	position = 0;
-	if (!(*pile_a) || !(*pile_b))
+	if (!num || !(*pile_b))
 		return (0);
-	tmp = *pile_b;
-	while (tmp)
+	position = 0;
+	b = *pile_b;
+	while (b && num < b->value)
 	{
-		if ((*pile_a)->value < tmp->value)
+		if (num < b->value)
 			position++;
-		tmp = tmp->next;
+		b = b->next;
 	}
 	return (position);
 }
 
-static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
+static void	move_position(t_nodes_list **pile_a, t_nodes_list **pile_b, size_t len)
 {
-	size_t	position;
-	size_t	b_len;
 	size_t	x;
+	size_t	position;
 
-	position = pos_node(pile_a, pile_b);
-	b_len = pile_len(pile_b);
-	x = b_len / 2 - 1;
-	if (position < 3)
+	position = pos_node((*pile_a)->value, pile_b);
+	x = position;
+	while (position > 0 && x > 0 && len > 1)
 	{
-		ft_putendl_fd(pb(pile_b, pile_a), 1);
-		sort_rev_three(pile_b);
+		if (position <= len / 2)
+			ft_putendl_fd(rrb(pile_b), 1);
+		else
+			ft_putendl_fd(rb(pile_b), 1);
+		x--;
 	}
-	else
-	{
-		while (x > 0)
-		{
-			if (position > b_len / 2)
-				ft_putendl_fd(rrb(pile_b), 1);
-			else
-				ft_putendl_fd(rb(pile_b), 1);
-			x--;
-		}
-		pb(pile_b, pile_a);
-	}
+	ft_putendl_fd(pb(pile_b, pile_a), 1);
 }
 
-static void	push_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
+static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
+{
+	size_t	b_len;
+	int	a;
+
+	a = (*pile_a)->value;
+	b_len = pile_len(pile_b);
+	if (b_len < 2 || (pile_rev_sorted(pile_b) && (is_min(a, pile_b) || is_max(a, pile_b))))
+	{
+		ft_putendl_fd(pb(pile_b, pile_a), 1);
+		if (b_len > 0 && is_min((*pile_b)->value, pile_b))
+			ft_putendl_fd(rb(pile_b), 1);
+	}
+	else
+		move_position(pile_a, pile_b, b_len);
+}
+
+void	push_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (!(*pile_b))
 		return ;
@@ -75,19 +82,10 @@ void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	while ((*pile_a)->next->next->next != NULL)
 	{
 		if (is_top_three(*pile_a))
-			ft_putendl_fd(ra(pile_a),1);
-		else if (is_max((*pile_a)->value, pile_b))
-			ft_putendl_fd(pb(pile_b, pile_a), 1);
-		else if (is_min((*pile_a)->value, pile_b))
-		{
-			ft_putendl_fd(pb(pile_b, pile_a), 1);
-			ft_putendl_fd(rb(pile_b), 1);
-		}
+			ft_putendl_fd(ra(pile_a), 1);
 		else
 			chose_move(pile_a, pile_b);
+		if (pos_linear(pile_a))
+			break ;
 	}
-	if (!pile_sorted(pile_a))
-		sort_three(pile_a);
-	if (pile_rev_sorted(pile_b))
-		push_into_a(pile_a, pile_b);
 }

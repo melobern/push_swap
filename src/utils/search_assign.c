@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:07:47 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/01 13:39:41 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/02 11:14:10 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	assign_nodes(t_nodes_list **pile, size_t len)
 			num->top_three = 1;
 		if (bigger_nums == len - 1)
 			num->is_min = 1;
-		num->pos = len - biggernums;
+		num->pos = len - bigger_nums;
 		num = num->next;
 	}
 }

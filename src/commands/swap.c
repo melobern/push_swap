@@ -6,26 +6,11 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:55:45 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 18:41:01 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/02 11:55:02 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-void	ft_swap_node(t_nodes_list *a, t_nodes_list *b)
-{
-	ft_swap(&(a->value), &(b->value));
-	ft_swap(&(a->top_three), &(b->top_three));
-}
 
 char	*sa(t_nodes_list **pile_a)
 {
