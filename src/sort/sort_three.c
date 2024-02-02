@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:24:24 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 15:01:37 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:03:18 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,4 @@ void	rev_sort(t_nodes_list **pile)
 	else
 		while (up-- > 0)
 			ft_putendl_fd(rrb(pile), 1);
-	if (!pile_sorted(pile))
-		rev_sort(pile);
-	//-->BEWARE !!!
 }
