@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 16:16:21 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:37:20 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,20 @@ static void	move_position(t_nodes_list **pile_a, t_nodes_list **pile_b, size_t l
 {
 	size_t	x;
 	size_t	position;
+	size_t	p_len;
 
 	position = pos_node((*pile_a)->value, pile_b);
+	if (position > len / 2)
+	{
+		rev_sort(pile_b);
+		position = pos_node((*pile_a)->value, pile_b);
+	}
 	x = position;
-	while (position > 0 && x > 0 && len > 1)
+	p_len = len;
+	while (position > 0 && x > 0 && (len > 1 && p_len >= len))
 	{
 	show_pile(pile_b);           ////
-		if (position < len - position)
+		if (position < (len - position))
 			ft_putendl_fd(rb(pile_b), 1);
 		else
 		{
@@ -51,9 +58,9 @@ static void	move_position(t_nodes_list **pile_a, t_nodes_list **pile_b, size_t l
 			ft_putendl_fd("prout", 1);
 		}
 		x--;
-	show_pile(pile_b);           ////
 	}
 	ft_putendl_fd(pb(pile_b, pile_a), 1);
+			ft_putendl_fd("prout prout", 1);
 	show_pile(pile_b);           ////
 }
 
