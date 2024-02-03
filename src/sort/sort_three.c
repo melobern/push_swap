@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:24:24 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 15:09:06 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:53:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,23 @@ void	rev_sort(t_nodes_list **pile)
 	}
 	if (up > down)
 	{
-		//while (!pile_rev_sorted(pile))
-		while (down-- > 0)
-			ft_putendl_fd(rb(pile), 1);
+		{
+			while (down-- > 0)
+				ft_putendl_fd(rrb(pile), 1);
+			if (!pile_rev_sorted(pile))
+				ft_putendl_fd(rrb(pile), 1);
+		}
 	}
 	else
+	{
 		while (up-- > 0)
-			ft_putendl_fd(rrb(pile), 1);
+			ft_putendl_fd(rb(pile), 1);
+		if (!pile_rev_sorted(pile))
+			ft_putendl_fd(rb(pile), 1);
+	}
 	/*
-		//while (!pile_rev_sorted(pile))
+		while (!pile_rev_sorted(pile))
 	*/
+	ft_putendl_fd("PILE B after rev_sort !", 1); ////
+	show_pile(pile);                             ////
 }
