@@ -6,39 +6,11 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:24:24 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/03 14:53:15 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:39:51 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	sort_rev_three(t_nodes_list **pile)
-{
-	int	one;
-	int	two;
-	int	three;
-
-	one = (*pile)->value;
-	two = (*pile)->next->value;
-	three = (*pile)->next->next->value;
-	if ((one < two && one > three))
-		ft_putendl_fd(sb(pile), 1);
-	else if ((one < two && two < three))
-	{
-		ft_putendl_fd(sb(pile), 1);
-		ft_putendl_fd(rrb(pile), 1);
-	}
-	else if ((one < two && one < three))
-		ft_putendl_fd(rb(pile), 1);
-	else if ((two < one && two < three))
-	{
-		ft_putendl_fd(rrb(pile), 1);
-		if (one > three)
-			ft_putendl_fd(sb(pile), 1);
-	}
-}
-*/
 
 void	sort_three(t_nodes_list **pile)
 {
@@ -105,7 +77,7 @@ void	rev_sort(t_nodes_list **pile)
 	}
 	/*
 		while (!pile_rev_sorted(pile))
-	*/
 	ft_putendl_fd("PILE B after rev_sort !", 1); ////
 	show_pile(pile);                             ////
+	*/
 }

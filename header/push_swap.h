@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 13:54:08 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:38:19 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int						pos_linear(t_nodes_list **pile);
 int						is_top_three(t_nodes_list *pile);
 int						is_min(int num, t_nodes_list **pile);
 int						is_max(int num, t_nodes_list **pile);
+int						is_min_max(int num, t_nodes_list **pile);
 void					first_sort(t_nodes_list pile_a, size_t len);
 void					sort_three(t_nodes_list **pile);
 void					rev_sort(t_nodes_list **pile);
