@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/04 16:38:19 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:44:27 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 typedef struct s_nodes_list
 {
 	int					value;
-	int					cost;
 	bool					top_three;
 	bool					is_min;
 	int					cheapest;
+	size_t				cost;
 	size_t				index;
 	size_t				pos;
 	struct s_nodes_list	*target;
