@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:50:07 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 11:23:48 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:42:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ int	ft_search_char(char letter, char *charset)
 		}
 	}
 	return (0);
+}
+
+size_t	abs_diff(size_t one, size_t two)
+{
+	if (!one || !two)
+		return (0);
+	if (one > two)
+		return (one - two);
+	return (two - one);
 }
