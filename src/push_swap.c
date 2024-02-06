@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/05 13:23:03 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:51:44 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,8 @@ void	push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	push_into_b(pile_a, pile_b);
 	if (!pile_sorted(pile_a))
 		sort_three(pile_a);
-	if (!pile_rev_sorted(pile_b))
-		rev_sort(pile_b);
-	if (*pile_b && !pile_rev_sorted(pile_b))
+	if (*pile_b)
 		back_into_a(pile_a, pile_b);
-	if (*pile_b && pile_rev_sorted(pile_b))
-		push_into_a(pile_a, pile_b);
 }
 
 int	main(int ac, char **av)

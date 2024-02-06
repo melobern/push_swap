@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/05 12:44:27 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:49:58 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 # define PUSH_SWAP_H
 
 # include "../Libft/libft.h"
-# include <stddef.h>
 # include <stdbool.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_nodes_list
 {
 	int					value;
-	bool					top_three;
-	bool					is_min;
-	int					cheapest;
+	bool				top_three;
+	bool				is_min;
 	size_t				cost;
 	size_t				index;
 	size_t				pos;
@@ -47,6 +46,7 @@ void					ft_fill_spaces(char *str);
 char					**ft_split_set(char const *s, char *tokens);
 void					ft_free_tab(char **tab);
 void					ft_perror(void);
+size_t					abs_diff(size_t one, size_t two);
 ////////////////////////////////////////////////////////////////
 ////////			CHECKS			////////
 ////////////////////////////////////////////////////////////////
@@ -89,11 +89,9 @@ int						is_min_max(int num, t_nodes_list **pile);
 void					first_sort(t_nodes_list pile_a, size_t len);
 void					sort_three(t_nodes_list **pile);
 void					rev_sort(t_nodes_list **pile);
-//void					sort_rev_three(t_nodes_list **pile);
+// void					sort_rev_three(t_nodes_list **pile);
 void					push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b);
 void					push_into_b(t_nodes_list **pile_a,
-							t_nodes_list **pile_b);
-void					push_into_a(t_nodes_list **pile_a,
 							t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
 ////////			LIST			////////
