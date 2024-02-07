@@ -6,73 +6,11 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/06 14:58:43 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:04:25 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-size_t	near(t_nodes_list *pile_a, t_nodes_list **pile_b)
-{
-	t_nodes_list	*a;
-	t_nodes_list	*b;
-	size_t nearest;
-	size_t diff;
-
-	if (!pile_a || !(*pile_b))
-		return (0);
-	a = pile_a;
-	b = *pile_b;
-	diff = abs_diff(a->pos, b->pos);
-	nearest = b->pos;
-	while (b)
-	{
-		if (diff > abs_diff(a->pos, b->pos) && a->value > b->value)
-		{
-			diff = abs_diff(a->pos, b->pos);
-			nearest = b->pos;
-		}
-		b = b->next;
-	}
-	return (nearest);
-}
-
-static size_t	calcul_pos(t_nodes_list *pile_a, t_nodes_list **pile_b)
-{
-	t_nodes_list	*b;
-	size_t nearest;
-	size_t			position;
-
-	if (!(pile_a) || !(*pile_b))
-		return (0);
-	position = 0;
-	b = *pile_b;
-	nearest = near(pile_a, pile_b);
-	if (b->pos == nearest && pile_a->value < b->value)
-		position++;
-	while (b->next && b->pos != nearest)
-	{
-		position++;
-		b = b->next;
-	}
-	//printf("Position de %i est %li\n", pile_a->value, position);
-	return (position);
-}
-
-static void	calcul_cost(t_nodes_list **a, t_nodes_list **b, size_t len)
-{
-	t_nodes_list	*first;
-	t_nodes_list	*sec;
-
-	first = *a;
-	sec = (*a)->next;
-	first->cost = calcul_pos(*a, b);
-	sec->cost = calcul_pos(sec, b) + 1;
-	if (first->cost > (len / 2))
-		first->cost = len - first->cost;
-	if (sec->cost > (len / 2))
-		sec->cost = len - sec->cost;
-}
 
 static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 {
@@ -83,13 +21,14 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 	calcul_cost(a, b, len);
 	if ((*a)->cost > (*a)->next->cost && !is_top_three((*a)->next))
 	{
-		if ((*b)->pos < (*b)->next->pos)
+		/*if ((*b)->pos < (*b)->next->pos && (*b)->next->next->pos < (*b)->pos)
 			ft_putendl_fd(ss(a, b), 1);
 		else
+			*/
 			ft_putendl_fd(sa(a), 1);
 	}
 	position = calcul_pos(*a, b);
-	if (position == 2)
+	if (position == 1 && (*b)->next->pos < (*a)->pos)
 	{
 		ft_putendl_fd(pb(b, a), 1);
 		calcul_cost(a, b, len);
@@ -101,7 +40,7 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 	}
 	x = position;
 	p_len = len;
-	while (position > 0 && x > 0 && (len > 1 && p_len >= len))
+	while (position > 0 && x > 0 && (len > 1 && p_len >= len) && position < len)
 	{
 		if (position < (len - position))
 			ft_putendl_fd(rb(b), 1);
@@ -116,8 +55,10 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 		x--;
 	}
 	ft_putendl_fd(pb(b, a), 1);
+	/*
 	if (position == p_len)
 			ft_putendl_fd(rb(b), 1);
+			*/
 }
 
 static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
@@ -134,8 +75,10 @@ static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
 		{
 			if (is_top_three(*pile_a))
 				ft_putendl_fd(rr(pile_a, pile_b), 1);
+				/*
 			else
 				ft_putendl_fd(rb(pile_b), 1);
+				*/
 		}
 	}
 	else

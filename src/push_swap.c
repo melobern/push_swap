@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/06 14:51:44 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:04:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ void	back_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 
 	if (!(*pile_b))
 		return ;
+	/*
+	 *
+	 * DONT RUN THE PROGRAM ! PROBLEM HERE !
+	 * EXPLICATION :
+	 * LA PILE A CONTIENT 3 CHIFFRES MAIS PLUS FORCEMENT LES PLUS GRANDS
+	 * DONC, FORCEMENT, B NE CONTIENDRA PAS LE CHIFFRE JUSTE AVANT LE 1ER DE A
+	 * CAR IL Y EN A AURA FORCEMENT UN QUI EST DANS A PARMI LES TROIS DERNIERS !!!
+	 */
 	while (*pile_b)
 	{
 		pos_a = (*pile_a)->pos;
@@ -91,14 +99,6 @@ int	main(int ac, char **av)
 		else
 			push_swap(&pile_a, &pile_b);
 	}
-	/*
-	// CRAPPY TESTS		////////////////////
-	ft_putendl_fd("PILE A !", 1); ////
-	show_pile(&pile_a);           ////
-	ft_putendl_fd("PILE B !", 1); ////
-	show_pile(&pile_b);           ////
-	// CRAPPY TESTS		////////////////////
-	*/
 	free_pile(&pile_a);
 	free_pile(&pile_b);
 	return (0);
