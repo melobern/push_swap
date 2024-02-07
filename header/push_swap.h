@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/06 14:49:58 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:04:07 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ void					rev_sort(t_nodes_list **pile);
 void					push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b);
 void					push_into_b(t_nodes_list **pile_a,
 							t_nodes_list **pile_b);
+////////////////////////////////////////////////////////////////
+////////			CALCULS			////////
+////////////////////////////////////////////////////////////////
+size_t					near(t_nodes_list *pile_a, t_nodes_list **pile_b);
+size_t					calcul_pos(t_nodes_list *pile_a, t_nodes_list **pile_b);
+void					calcul_cost(t_nodes_list **a, t_nodes_list **b,
+							size_t len);
+
 ////////////////////////////////////////////////////////////////
 ////////			LIST			////////
 ////////////////////////////////////////////////////////////////

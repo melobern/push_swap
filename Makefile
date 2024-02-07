@@ -6,7 +6,7 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/02/02 12:00:34 by mbernard         ###   ########.fr        #
+#    Updated: 2024/02/07 11:00:56 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = push_swap							\
        swap	push	rotate	reverse					\
        check	one_arg_check	ft_split_set	\
        utils	list_utils	sort_utils	swap_utils	\
-       fill_pile	search_assign				\
+       fill_pile	search_assign	calculs				\
        sort_three			\
        push_into_b	\
        PROUT_PROUT #TO REMOVE OBVIOUSLY LOLOL
