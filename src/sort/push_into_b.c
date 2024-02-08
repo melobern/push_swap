@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 15:02:36 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:49:04 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,11 @@ bool	sorted_if_rotated(t_nodes_list **pile)
 {
 	t_nodes_list	*tmp;
 	size_t			counter;
+	size_t			memento;
 
 	tmp = *pile;
 	counter = 0;
+	memento = tmp->pos;
 	while (tmp->next != NULL)
 	{
 		if (tmp->pos + 1 != tmp->next->pos)
@@ -118,7 +120,7 @@ bool	sorted_if_rotated(t_nodes_list **pile)
 		}
 		tmp = tmp->next;
 	}
-	return (1);
+	return (tmp->prev->pos == memento + 1);
 }
 
 void	rotate_until_sorted(size_t pos, t_nodes_list **a)
@@ -160,7 +162,7 @@ void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	while ((*pile_a)->next->next->next != NULL && !pos_linear(pile_a))
 	{
 		if (sorted_if_rotated(pile_a))
-			return (rotate_until_sorted((*pile_a)->pos, pile_a));
+			rotate_until_sorted((*pile_a)->pos, pile_a);
 		pos_a = (*pile_a)->pos;
 		pos_n = (*pile_a)->next->pos;
 		two_next = (*pile_a)->next; 
