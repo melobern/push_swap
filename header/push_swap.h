@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/07 18:08:33 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:38:51 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ bool					sorted_if_rotated(t_nodes_list **pile);
 bool					is_min(size_t num, t_nodes_list **pile);
 bool					is_max(size_t num, t_nodes_list **pile);
 bool					is_min_max(size_t num, t_nodes_list **pile);
+bool					is_top_three(t_nodes_list *pile);
 void					first_sort(t_nodes_list pile_a, size_t len);
 void					sort_three(t_nodes_list **pile);
-void					rev_sort(t_nodes_list **pile);
 void					push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b);
 void					push_into_b(t_nodes_list **pile_a,
 							t_nodes_list **pile_b);
@@ -96,13 +96,13 @@ void					push_into_b(t_nodes_list **pile_a,
 ////////			CALCULS			////////
 ////////////////////////////////////////////////////////////////
 size_t					near(t_nodes_list *pile_a, t_nodes_list **pile_b);
-size_t					calcul_pos_a(t_nodes_list *pile_a, t_nodes_list **pile_b);
-size_t					calcul_pos_b(t_nodes_list *pile_a, t_nodes_list **pile_b);
+size_t					calcul_pos(t_nodes_list *pile_a, t_nodes_list **pile_b);
 void					calcul_cost(t_nodes_list **a, t_nodes_list **b,
 							size_t len);
-
-size_t	search_cheaper_a(t_nodes_list **a, t_nodes_list **b, size_t len);
-void	sync_rotate_b(t_nodes_list **a, t_nodes_list **b, size_t a_len);
+size_t					search_cheaper_a(t_nodes_list **a, t_nodes_list **b,
+							size_t len);
+void					sync_rotate_b(t_nodes_list **a, t_nodes_list **b,
+							size_t a_len);
 ////////////////////////////////////////////////////////////////
 ////////			LIST			////////
 ////////////////////////////////////////////////////////////////

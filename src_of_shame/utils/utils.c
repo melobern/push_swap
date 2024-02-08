@@ -1,47 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_utils.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 11:49:10 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/02 11:51:43 by mbernard         ###   ########.fr       */
+/*   Created: 2024/01/19 09:50:07 by mbernard          #+#    #+#             */
+/*   Updated: 2024/02/06 14:42:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(int *a, int *b)
+void	ft_perror(void)
 {
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
 
-void	ft_swap_bool(bool *a, bool *b)
+int	ft_isspace(int n)
 {
-	bool	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	return ((n > 8 && n < 14) || n == 32);
 }
 
-void	ft_swap_size_t(size_t *a, size_t *b)
+int	ft_search_char(char letter, char *charset)
 {
-	size_t	tmp;
+	int	c;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	c = 0;
+	if (charset)
+	{
+		while (charset[c])
+		{
+			if (letter == charset[c])
+				return (1);
+			c++;
+		}
+	}
+	return (0);
 }
 
-void	ft_swap_node(t_nodes_list *a, t_nodes_list *b)
+size_t	abs_diff(size_t one, size_t two)
 {
-	ft_swap(&(a->value), &(b->value));
-	ft_swap_size_t(&(a->pos), &(b->pos));
-	ft_swap_bool(&(a->top_three), &(b->top_three));
+	if (!one || !two)
+		return (0);
+	if (one > two)
+		return (one - two);
+	return (two - one);
 }
