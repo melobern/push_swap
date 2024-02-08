@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 15:20:38 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:32:58 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 bool	down_or_up(size_t pos, t_nodes_list **pile)
 {
-	t_nodes_list	*b;
-	int				up;
-	int				down;
+	t_nodes_list	*tmp;
+	size_t				up;
+	size_t				down;
 
 	if (!(*pile) || pos)
 		return (-1);
 	up = 0;
 	down = 0;
-	b = *pile;
-	while (b->next)
+	tmp = *pile;
+	while (tmp->next)
 	{
-		if (pos > b->next->pos)
+		if (pos > tmp->next->pos)
 			up++;
-		if (pos < b->next->pos)
+		if (pos < tmp->next->pos)
 			down++;
-		b = b->next;
+		tmp = tmp->next;
 	}
 	if (up > down)
 		return (1);

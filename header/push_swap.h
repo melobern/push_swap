@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 10:38:51 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:38:31 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_nodes_list
 	size_t				cost;
 	size_t				index;
 	size_t				pos;
-	struct s_nodes_list	*target;
 	struct s_nodes_list	*next;
 	struct s_nodes_list	*prev;
 }						t_nodes_list;
@@ -77,6 +76,10 @@ char					*rra(t_nodes_list **pile_a);
 char					*rrb(t_nodes_list **pile_b);
 char					*rrr(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
+////////		CHOSE COMMANDS			////////
+////////////////////////////////////////////////////////////////
+void	roll_a(bool down, t_nodes_list **pile_a);
+////////////////////////////////////////////////////////////////
 ////////			SORT			////////
 ////////////////////////////////////////////////////////////////
 bool					pile_sorted(t_nodes_list **pile);
@@ -87,6 +90,7 @@ bool					is_min(size_t num, t_nodes_list **pile);
 bool					is_max(size_t num, t_nodes_list **pile);
 bool					is_min_max(size_t num, t_nodes_list **pile);
 bool					is_top_three(t_nodes_list *pile);
+bool	down_or_up(size_t pos, t_nodes_list **pile);
 void					first_sort(t_nodes_list pile_a, size_t len);
 void					sort_three(t_nodes_list **pile);
 void					push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b);
@@ -101,6 +105,7 @@ void					calcul_cost(t_nodes_list **a, t_nodes_list **b,
 							size_t len);
 size_t					search_cheaper_a(t_nodes_list **a, t_nodes_list **b,
 							size_t len);
+size_t					search_min(t_nodes_list **pile);
 void					sync_rotate_b(t_nodes_list **a, t_nodes_list **b,
 							size_t a_len);
 ////////////////////////////////////////////////////////////////
