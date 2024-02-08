@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 08:36:17 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 10:58:24 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:04:51 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	ft_check_isnum(char **av)
 	int	y;
 
 	x = 0;
-	if (!av)
-		return (0);
 	while (av[x])
 	{
 		if (!ft_isdigit(av[x][0]) && av[x][0] != '-')
@@ -63,8 +61,6 @@ int	ft_check_overflow(char **av)
 	char	*copy;
 
 	x = 0;
-	if (!av)
-		return (0);
 	while (av[x])
 	{
 		num = ft_atoi(av[x]);
@@ -77,7 +73,7 @@ int	ft_check_overflow(char **av)
 		}
 		if (ft_strncmp(copy, av[x] + zeros, ft_strlen(av[x])) != 0)
 			return (free(copy), 0);
-		if (num < 0 && zeros != 0 && av[x][zeros - 1])
+		if (num < 0 && av[x][zeros - 1])
 			av[x][zeros] = '0';
 		free(copy);
 		x++;
@@ -91,8 +87,6 @@ int	ft_check_doubles(char **av)
 	int	y;
 
 	x = 0;
-	if (!av)
-		return (0);
 	while (av[x])
 	{
 		y = x + 1;

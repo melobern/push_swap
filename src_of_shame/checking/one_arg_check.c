@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:43:21 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 11:26:58 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:27:15 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_one_arg_check(char *av)
 
 	ft_fill_spaces(spaces);
 	args = ft_split_set(av, spaces);
-	if (!args || !args[0])
+	if (!args || !args[1])
 		exit(EXIT_FAILURE);
 	if (ft_check_isnum(args) == 0)
 	{

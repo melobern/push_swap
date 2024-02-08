@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:19 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 10:27:28 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:51:41 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,6 @@ bool	pile_sorted(t_nodes_list **pile)
 		*pile = (*pile)->next;
 	}
 	*pile = start;
-	return (1);
-}
-
-bool	pos_linear(t_nodes_list **pile)
-{
-	t_nodes_list	*tmp;
-
-	tmp = *pile;
-	while (tmp->next != NULL)
-	{
-		if (tmp->pos + 1 != tmp->next->pos)
-			return (0);
-		tmp = tmp->next;
-	}
 	return (1);
 }
 
