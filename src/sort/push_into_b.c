@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 18:49:04 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:38:57 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,7 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 
 	calcul_cost(a, b, len);
 	if ((*a)->cost > (*a)->next->cost && !is_top_three((*a)->next))
-	{
-		/*if ((*b)->pos < (*b)->next->pos && (*b)->next->next->pos < (*b)->pos)
-			ft_putendl_fd(ss(a, b), 1);
-		else
-			*/
 		ft_putendl_fd(sa(a), 1);
-	}
 	position = calcul_pos(*a, b);
 	if (position == 1 && (*b)->next->pos < (*a)->pos)
 	{
@@ -55,10 +49,6 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
 		x--;
 	}
 	ft_putendl_fd(pb(b, a), 1);
-	/*
-	if (position == p_len)
-			ft_putendl_fd(rb(b), 1);
-			*/
 }
 
 static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
@@ -75,35 +65,16 @@ static void	chose_move(t_nodes_list **pile_a, t_nodes_list **pile_b)
 		{
 			if (is_top_three(*pile_a))
 				ft_putendl_fd(rr(pile_a, pile_b), 1);
-			/*
-		else
-			ft_putendl_fd(rb(pile_b), 1);
-			*/
 		}
 	}
 	else
 		move_position(pile_a, pile_b, b_len);
 }
 
-size_t	search_min(t_nodes_list **pile)
-{
-	t_nodes_list	*tmp;
-	size_t			min;
-
-	tmp = *pile;
-	min = tmp->pos;
-	while (tmp->next != NULL)
-	{
-		if (min > tmp->next->pos)
-			min = tmp->next->pos;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
 bool	sorted_if_rotated(t_nodes_list **pile)
 {
 	t_nodes_list	*tmp;
+	t_nodes_list	*last;
 	size_t			counter;
 	size_t			memento;
 
@@ -118,63 +89,33 @@ bool	sorted_if_rotated(t_nodes_list **pile)
 			if (counter > 1)
 				return (0);
 		}
+		last = tmp;
 		tmp = tmp->next;
 	}
-	return (tmp->prev->pos == memento + 1);
+	return (last->pos == memento + 1);
 }
 
 void	rotate_until_sorted(size_t pos, t_nodes_list **a)
 {
-	t_nodes_list	*tmp;
-	size_t			up;
 	size_t			down;
 	size_t			min;
 
-	tmp = *a;
-	up = 0;
-	down = 0;
 	min = search_min(a);
-	while (tmp->next)
-	{
-		if (pos > tmp->next->pos)
-			up++;
-		if (pos < tmp->next->pos)
-			down++;
-		tmp = tmp->next;
-	}
+	down = down_or_up(pos, a);
 	while ((*a)->pos != min)
-	{
-		if (up >= down)
-			ft_putendl_fd(ra(a), 1);
-		else
-			ft_putendl_fd(rra(a), 1);
-	}
+		roll_a(down, a);
 }
 
 void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
-	size_t	pos_a;
-	size_t	pos_n;
-	t_nodes_list	*two_next;
-
 	if (!(*pile_a))
 		return ;
 	while ((*pile_a)->next->next->next != NULL && !pos_linear(pile_a))
 	{
 		if (sorted_if_rotated(pile_a))
 			rotate_until_sorted((*pile_a)->pos, pile_a);
-		pos_a = (*pile_a)->pos;
-		pos_n = (*pile_a)->next->pos;
-		two_next = (*pile_a)->next; 
-		if (!is_top_three(*pile_a) && pos_a == pos_n + 1 && pile_sorted(&two_next))
-			ft_putendl_fd(sa(pile_a), 1);
-		else if (is_top_three(*pile_a))
+		if (is_top_three(*pile_a))
 			ft_putendl_fd(ra(pile_a), 1);
-		/*
-			* else if (!is_min_max(next_n, pile_b) && is_min_max(actual_n,
-					pile_b))
-			ft_putendl_fd(sa(pile_a), 1);
-		*/
 		else
 			chose_move(pile_a, pile_b);
 	}
