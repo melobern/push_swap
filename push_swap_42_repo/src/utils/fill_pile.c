@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:48:14 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/09 15:26:11 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:29:49 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_nodes_list	*add_num(int number, t_nodes_list *prev_l)
 		return (NULL);
 	new->value = number;
 	new->pos = 0;
+	new->up = 0;
+	new->down = 0;
 	new->top_three = 0;
 	new->next = NULL;
 	if (prev_l)

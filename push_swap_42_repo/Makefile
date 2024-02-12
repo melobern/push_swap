@@ -6,13 +6,13 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/02/09 15:36:05 by mbernard         ###   ########.fr        #
+#    Updated: 2024/02/12 16:11:44 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -MMD -MP 
+CFLAGS = -Wall -Wextra -Werror -g3 -MMD -MP 
 RM = rm -f
 RMDIR = rm -rf
 MKDIR = mkdir -p

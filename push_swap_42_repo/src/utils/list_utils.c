@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:19 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 10:27:28 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:00:02 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,15 @@ void	free_pile(t_nodes_list **li)
 
 bool	pile_sorted(t_nodes_list **pile)
 {
-	t_nodes_list	*start;
+	t_nodes_list	*tmp;
 
-	start = *pile;
-	while ((*pile)->next != NULL)
+	tmp = *pile;
+	while (tmp->next != NULL)
 	{
-		if ((*pile)->value > (*pile)->next->value)
-		{
-			*pile = start;
+		if (tmp->value > tmp->next->value)
 			return (0);
-		}
-		*pile = (*pile)->next;
+		tmp = tmp->next;
 	}
-	*pile = start;
 	return (1);
 }
 
@@ -65,19 +61,15 @@ bool	pos_linear(t_nodes_list **pile)
 
 bool	pile_rev_sorted(t_nodes_list **pile)
 {
-	t_nodes_list	*start;
+	t_nodes_list	*tmp;
 
-	start = *pile;
-	while ((*pile)->next != NULL)
+	tmp = *pile;
+	while (tmp->next != NULL)
 	{
-		if ((*pile)->value < (*pile)->next->value)
-		{
-			*pile = start;
+		if (tmp->value < tmp->next->value)
 			return (0);
-		}
-		*pile = (*pile)->next;
+		tmp = tmp->next;
 	}
-	*pile = start;
 	return (1);
 }
 

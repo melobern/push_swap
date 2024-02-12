@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:51:13 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:05:19 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@ static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len_b)
 
 	calcul_cost(a, b, len_b);
 	if ((*a)->cost > (*a)->next->cost && !is_top_three((*a)->next))
-		ft_putendl_fd(sa(a), 1);
+	{	
+		if((*a)->next->up > (*a)->next->down)
+			ft_putendl_fd(rr(a, b), 1);
+		else
+			ft_putendl_fd(rrr(a, b), 1);
+	}
+	//	ft_putendl_fd(sa(a), 1);
 	position = calcul_pos(*a, b);
 	if (position == 1 && (*b)->next->pos < (*a)->pos)
 	{

@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/09 15:20:41 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:29:18 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_nodes_list
 	bool				top_three;
 	size_t				cost;
 	size_t				pos;
+	size_t				up;
+	size_t				down;
 	struct s_nodes_list	*next;
 	struct s_nodes_list	*prev;
 }						t_nodes_list;
@@ -64,6 +66,7 @@ char		*rrr(t_nodes_list **pile_a, t_nodes_list **pile_b);
 ////////////////////////////////////////////////////////////////
 ////////		CHOSE COMMANDS			////////
 ////////////////////////////////////////////////////////////////
+void		ra_or_rr(t_nodes_list **a, t_nodes_list **b);
 void		ss_or_sb(t_nodes_list **a, t_nodes_list **b, size_t len);
 void		rb_or_rrb(t_nodes_list **b, size_t *len, size_t position);
 void		roll_a(bool direction, t_nodes_list **pile_a);
