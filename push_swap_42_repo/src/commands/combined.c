@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 08:30:54 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/09 08:57:49 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:24:54 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,22 @@ bool	down_or_up(size_t pos, t_nodes_list **pile)
 	up = 0;
 	down = 0;
 	tmp = *pile;
-	while (tmp->next)
+	while (tmp->next && pos < tmp->next->pos)
 	{
-		if (pos > tmp->next->pos)
-			up++;
-		if (pos < tmp->next->pos)
-			down++;
+		up++;
 		tmp = tmp->next;
 	}
-	if (up > down)
-		return (1);
-	return (0);
+	while (tmp->next && pos > tmp->next->pos)
+	{
+		up++;
+		tmp = tmp->next;
+	}
+	while (tmp->next)
+	{
+		down++;
+		tmp = tmp->next;
+	}
+	return (up > down);
 }
 
 void	roll_a(bool direction, t_nodes_list **pile_a)
@@ -77,3 +82,20 @@ void	rb_or_rrb(t_nodes_list **b, size_t *len, size_t position)
 		}
 	}
 }
+
+/*
+* NON FONCTIONNEL, FAIT KO OU CRASHER
+void	ra_or_rr(t_nodes_list **a, t_nodes_list **b)
+{
+	
+	t_nodes_list	*tmp;
+
+	tmp = *a;
+	while (is_top_three(tmp))
+		tmp = tmp->next;
+	if (down_or_up(tmp->pos, b))
+		ft_putendl_fd(ra(b), 1);
+	else
+		ft_putendl_fd(rr(a, b), 1);
+}
+*/

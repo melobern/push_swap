@@ -6,11 +6,32 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:59:29 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/09 09:03:22 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:58:40 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	place_first_pile(size_t pos, t_nodes_list **pile, size_t *up, size_t *down)
+{
+	t_nodes_list	*tmp;
+
+	if (!(*pile) || pos)
+		return ;
+	tmp = *pile;
+	*up = 0;
+	*down = 0;
+	while (tmp->next && pos != tmp->pos)
+	{
+		++(*up);
+		tmp = tmp->next;
+	}
+	while (tmp->next)
+	{
+		++(*down);
+		tmp = tmp->next;
+	}
+}
 
 size_t	near(t_nodes_list *pile_a, t_nodes_list **pile_b)
 {
@@ -66,13 +87,17 @@ void	calcul_cost(t_nodes_list **a, t_nodes_list **b, size_t len)
 {
 	t_nodes_list	*first;
 	t_nodes_list	*sec;
+	
 
 	first = *a;
 	sec = (*a)->next;
-	first->cost = calcul_pos(*a, b);
-	sec->cost = calcul_pos(sec, b) + 1;
-	if (first->cost >= (len / 2))
-		first->cost = len - first->cost;
-	if (sec->cost >= (len / 2))
-		sec->cost = len + 1 - sec->cost;
+	place_first_pile(first->pos, a, &(first->up), &(first->down));
+	first->cost = calcul_pos(first, b);
+	first->up = abs_diff(first->cost, first->up);
+	first->down = abs_diff(len - first->cost, first->down);
+
+	place_first_pile(sec->pos, a, &(sec->up), &(sec->down));
+	sec->cost = calcul_pos(sec, b);
+	sec->up = abs_diff(sec->cost, first->up);
+	sec->down = abs_diff(len - sec->cost, first->down);
 }
