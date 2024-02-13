@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:59:29 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/12 15:58:40 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 09:25:43 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,16 @@ void	calcul_cost(t_nodes_list **a, t_nodes_list **b, size_t len)
 {
 	t_nodes_list	*first;
 	t_nodes_list	*sec;
-	
 
 	first = *a;
+	first->cost = calcul_pos(*a, b);
+	if (first->cost >= (len / 2))
+		first->cost = len - first->cost;
 	sec = (*a)->next;
-	place_first_pile(first->pos, a, &(first->up), &(first->down));
-	first->cost = calcul_pos(first, b);
-	first->up = abs_diff(first->cost, first->up);
-	first->down = abs_diff(len - first->cost, first->down);
-
-	place_first_pile(sec->pos, a, &(sec->up), &(sec->down));
-	sec->cost = calcul_pos(sec, b);
-	sec->up = abs_diff(sec->cost, first->up);
-	sec->down = abs_diff(len - sec->cost, first->down);
+	if (sec != NULL)
+	{
+		sec->cost = calcul_pos(sec, b);
+		if (sec->cost >= (len / 2))
+			sec->cost = len - sec->cost;
+	}
 }
