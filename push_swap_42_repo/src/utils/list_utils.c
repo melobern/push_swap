@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:19 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/13 09:32:42 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:58:57 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ void	free_pile(t_nodes_list **li)
 			free(*li);
 			(*li) = tmp;
 		}
-		/*
-		while ((*li)->prev != NULL)
-		{
-			tmp = (*li)->prev;
-			free(*li);
-			(*li) = tmp;
-		}
-		*/
 		free(*li);
 		*li = NULL;
 	}

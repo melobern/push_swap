@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:26:28 by mbernard          #+#    #+#             */
-/*   Updated: 2024/01/30 19:10:52 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:36:59 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	reverse_pile(t_nodes_list **pile)
 	while (tmp->prev != NULL)
 	{
 		ft_swap_node(tmp, tmp->prev);
+		tmp->prev->next = tmp;
 		tmp = tmp->prev;
 	}
 }

@@ -6,15 +6,15 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/02/08 19:25:43 by mbernard         ###   ########.fr        #
+#    Updated: 2024/02/09 11:39:26 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 JUSTC="\n NO FSANITIZE HERE ! DON'T FORGET TO CUT THE CRAP FROM MAKEFILE !\n"
-FSAN="\n\n\nOOOH ! It seems you're FSANITIZING again !\n"
+#FSAN="\n\n\nOOOH ! It seems you're FSANITIZING again !\n"
 CC = echo ${JUSTC} && cc -g3
-#CC = echo ${FSAN} && cc -fsanitize=address -g3
+CC = echo ${FSAN} && cc -fsanitize=address -g3
 CFLAGS = -Wall -Wextra -Werror -MMD -MP 
 RM = rm -f
 RMDIR = rm -rf
@@ -25,6 +25,7 @@ vpath %.c src src/checking	src/commands	src/sort	src/utils
 
 SRCS = push_swap							\
        swap	push	rotate	reverse					\
+       combined					\
        check	one_arg_check	ft_split_set	\
        utils	list_utils	sort_utils	swap_utils	\
        fill_pile	search_assign	search	calculs			\

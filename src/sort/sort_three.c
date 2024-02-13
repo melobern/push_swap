@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:24:24 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/04 18:39:51 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 09:32:47 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,44 +40,11 @@ void	sort_three(t_nodes_list **pile)
 
 void	rev_sort(t_nodes_list **pile)
 {
-	t_nodes_list	*b;
-	int				num;
-	int				up;
-	int				down;
+	size_t	direction;
 
 	if (!(*pile))
 		return ;
-	b = *pile;
-	num = b->value;
-	up = 0;
-	down = 0;
-	while (b->next)
-	{
-		if (num > b->next->value)
-			up++;
-		else
-			down++;
-		b = b->next;
-	}
-	if (up > down)
-	{
-		{
-			while (down-- > 0)
-				ft_putendl_fd(rrb(pile), 1);
-			if (!pile_rev_sorted(pile))
-				ft_putendl_fd(rrb(pile), 1);
-		}
-	}
-	else
-	{
-		while (up-- > 0)
-			ft_putendl_fd(rb(pile), 1);
-		if (!pile_rev_sorted(pile))
-			ft_putendl_fd(rb(pile), 1);
-	}
-	/*
-		while (!pile_rev_sorted(pile))
-	ft_putendl_fd("PILE B after rev_sort !", 1); ////
-	show_pile(pile);                             ////
-	*/
+	direction = down_or_up((*pile)->pos, pile);
+	while (!pile_rev_sorted(pile))
+		roll_b(direction, pile);
 }

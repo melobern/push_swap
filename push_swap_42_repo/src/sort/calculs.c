@@ -6,19 +6,19 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:59:29 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/13 09:25:43 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:01:45 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	place_first_pile(size_t pos, t_nodes_list **pile, size_t *up, size_t *down)
+void	place_first_pile(size_t pos, t_nodes_list **p, size_t *up, size_t *down)
 {
 	t_nodes_list	*tmp;
 
-	if (!(*pile) || pos)
+	if (!(*p) || pos)
 		return ;
-	tmp = *pile;
+	tmp = *p;
 	*up = 0;
 	*down = 0;
 	while (tmp->next && pos != tmp->pos)

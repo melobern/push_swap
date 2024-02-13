@@ -6,46 +6,30 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:01:31 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 20:38:57 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:16:12 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len)
+static void	move_position(t_nodes_list **a, t_nodes_list **b, size_t len_b)
 {
 	size_t	x;
 	size_t	position;
-	size_t	p_len;
 
-	calcul_cost(a, b, len);
+	calcul_cost(a, b, len_b);
 	if ((*a)->cost > (*a)->next->cost && !is_top_three((*a)->next))
 		ft_putendl_fd(sa(a), 1);
 	position = calcul_pos(*a, b);
 	if (position == 1 && (*b)->next->pos < (*a)->pos)
 	{
 		ft_putendl_fd(pb(b, a), 1);
-		calcul_cost(a, b, len);
-		if ((*a)->cost > (*a)->next->cost && !is_top_three((*a)->next))
-			ft_putendl_fd(ss(a, b), 1);
-		else
-			ft_putendl_fd(sb(b), 1);
-		return ;
+		return (ss_or_sb(a, b, len_b));
 	}
 	x = position;
-	p_len = len;
-	while (position > 0 && x > 0 && (len > 1 && p_len >= len) && position < len)
+	while (position > 0 && x > 0 && len_b > 1 && position < len_b)
 	{
-		if (position < (len - position))
-			ft_putendl_fd(rb(b), 1);
-		else
-		{
-			len = len - position;
-			if (len == 0)
-				len++;
-			while (len--)
-				ft_putendl_fd(rrb(b), 1);
-		}
+		rb_or_rrb(b, &len_b, position);
 		x--;
 	}
 	ft_putendl_fd(pb(b, a), 1);
@@ -97,8 +81,8 @@ bool	sorted_if_rotated(t_nodes_list **pile)
 
 void	rotate_until_sorted(size_t pos, t_nodes_list **a)
 {
-	size_t			down;
-	size_t			min;
+	size_t	down;
+	size_t	min;
 
 	min = search_min(a);
 	down = down_or_up(pos, a);
@@ -106,6 +90,33 @@ void	rotate_until_sorted(size_t pos, t_nodes_list **a)
 		roll_a(down, a);
 }
 
+void	ra_or_rr(t_nodes_list **a, t_nodes_list **b)
+{
+	t_nodes_list *tmp;
+	size_t	b_len;
+	size_t	nearest;
+	size_t	move_ra;
+
+	if (!(*a))
+		return ;
+	b_len = pile_len(b);
+	if (!(*b) || b_len < 5)
+		ft_putendl_fd(ra(a), 1);
+	tmp = *a;
+	move_ra = 0;
+	while (tmp && is_top_three(tmp))
+	{
+		tmp = tmp->next;
+		move_ra++;
+	}:
+	nearest = near(tmp, b);
+	if (down_or_up(tmp->pos, b))
+		ft_putendl_fd(ra(a), 1);
+	else
+		ft_putendl_fd(rr(a, b), 1);
+
+
+}
 void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	if (!(*pile_a))
@@ -115,7 +126,9 @@ void	push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b)
 		if (sorted_if_rotated(pile_a))
 			rotate_until_sorted((*pile_a)->pos, pile_a);
 		if (is_top_three(*pile_a))
-			ft_putendl_fd(ra(pile_a), 1);
+			ra_or_rr(pile_a, pile_b);
+//			ft_putendl_fd(rr(pile_a, pile_b), 1);
+//			ft_putendl_fd(ra(pile_a), 1);
 		else
 			chose_move(pile_a, pile_b);
 	}
