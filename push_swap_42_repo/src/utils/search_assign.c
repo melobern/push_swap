@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:07:47 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/13 11:40:20 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:03:35 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	assign_nodes(t_nodes_list **pile, size_t len)
 		if (bigger_nums == 0)
 			num->top_one = 1;
 		num->pos = len - (bigger_nums + 1);
-		//Etrangement, ne pas ajouter 1 pour que le pos minimum soit a 0 rend le tri de 5 plus long, mais l'ajouter double le temps pour 100 et 500 
 		num->bin_num = dec_to_bin(num->pos);
 		num = num->next;
 	}

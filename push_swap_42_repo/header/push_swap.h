@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:57:01 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/12 15:29:18 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:57:31 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ typedef struct s_nodes_list
 {
 	int					value;
 	bool				top_three;
+	bool				top_one;
 	size_t				cost;
 	size_t				pos;
-	size_t				up;
-	size_t				down;
+	size_t				bin_num;
 	struct s_nodes_list	*next;
 	struct s_nodes_list	*prev;
 }						t_nodes_list;
@@ -40,6 +40,7 @@ void		ft_free_tab(char **tab);
 void		ft_perror(void);
 void		malloc_error(void);
 size_t		abs_diff(size_t one, size_t two);
+//size_t		dec_to_bin(size_t num);
 ////////////////////////////////////////////////////////////////
 ////////			CHECKS			////////
 ////////////////////////////////////////////////////////////////
@@ -83,6 +84,7 @@ bool		is_top_three(t_nodes_list *pile);
 bool		down_or_up(size_t pos, t_nodes_list **pile);
 void		sort_three(t_nodes_list **pile);
 void		push_into_b(t_nodes_list **pile_a, t_nodes_list **pile_b);
+void		radix_sort(t_nodes_list **a, t_nodes_list **b, size_t len);
 ////////////////////////////////////////////////////////////////
 ////////			CALCULS			////////
 ////////////////////////////////////////////////////////////////

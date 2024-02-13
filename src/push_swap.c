@@ -6,48 +6,15 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 20:32:58 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 08:39:08 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	down_or_up(size_t pos, t_nodes_list **pile)
-{
-	t_nodes_list	*tmp;
-	size_t				up;
-	size_t				down;
-
-	if (!(*pile) || pos)
-		return (-1);
-	up = 0;
-	down = 0;
-	tmp = *pile;
-	while (tmp->next)
-	{
-		if (pos > tmp->next->pos)
-			up++;
-		if (pos < tmp->next->pos)
-			down++;
-		tmp = tmp->next;
-	}
-	if (up > down)
-		return (1);
-	return (0);
-}
-
-void	roll_a(bool down, t_nodes_list **pile_a)
-{
-	if (down == 1)
-		ft_putendl_fd(ra(pile_a), 1);
-	else
-		ft_putendl_fd(rra(pile_a), 1);
-}
-
 void	back_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
-	bool	up;
-	bool	down;
+	bool	direction;
 
 	if (!(*pile_b))
 		return ;
@@ -55,17 +22,15 @@ void	back_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	{
 		if (pile_len(pile_b) == 1)
 		{
-			down = down_or_up((*pile_a)->pos, pile_a);
+			direction = down_or_up((*pile_a)->pos, pile_a);
 			while ((*pile_a)->pos != (*pile_b)->pos + 1)
-				roll_a(down, pile_a);
+				roll_a(direction, pile_a);
 		}
-		up = down_or_up((*pile_b)->pos, pile_b);
-		while ((*pile_b)->pos != (*pile_a)->pos - 1)
+		else
 		{
-			if (up == 1)
-				ft_putendl_fd(rb(pile_b), 1);
-			else
-				ft_putendl_fd(rrb(pile_b), 1);
+			direction = down_or_up((*pile_b)->pos, pile_b);
+			while ((*pile_b)->pos != (*pile_a)->pos - 1)
+				roll_b(direction, pile_b);
 		}
 		ft_putendl_fd(pa(pile_a, pile_b), 1);
 	}

@@ -6,12 +6,12 @@
 #    By: mbernard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:56:49 by mbernard          #+#    #+#              #
-#    Updated: 2024/02/12 16:11:44 by mbernard         ###   ########.fr        #
+#    Updated: 2024/02/13 17:56:56 by mbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-CC = cc
+CC = cc 
 CFLAGS = -Wall -Wextra -Werror -g3 -MMD -MP 
 RM = rm -f
 RMDIR = rm -rf
@@ -25,7 +25,7 @@ SRCS = push_swap	push_into_b					\
        calculs	combined	search_assign	fill_pile		\
        check	one_arg_check	ft_split_set				\
        utils	list_utils	sort_utils	swap_utils		\
-       sort_three
+       sort_three	radix_sort
 
 # ---------------------------------- Repertories ----------------------------- #
 OBJS_DIR = .objs/

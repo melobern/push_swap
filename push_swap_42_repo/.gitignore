@@ -1,0 +1,17 @@
+*~
+*.swp
+*.o
+*.a
+*.gch
+*Tester
+.dep
+.objs
+.vscode
+main.c
+a.out
+archives
+push_swap
+push_swap_tester
+push_swap_visualizer
+ft_printf
+checker_linux

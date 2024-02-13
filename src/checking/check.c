@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 08:36:17 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/08 10:58:24 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 09:48:00 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_skip_zeros(int num, char *str)
 	int	zeros;
 
 	zeros = 0;
-	if (str)
+	if (str && num)
 	{
 		if (num <= 0 && str[0] == '-')
 			zeros++;
@@ -62,19 +62,16 @@ int	ft_check_overflow(char **av)
 	int		zeros;
 	char	*copy;
 
-	x = 0;
 	if (!av)
 		return (0);
+	x = 0;
 	while (av[x])
 	{
 		num = ft_atoi(av[x]);
 		zeros = ft_skip_zeros(num, av[x]);
 		copy = ft_itoa(num);
 		if (num < 0)
-		{
-			zeros--;
-			av[x][zeros] = '-';
-		}
+			av[x][--zeros] = '-';
 		if (ft_strncmp(copy, av[x] + zeros, ft_strlen(av[x])) != 0)
 			return (free(copy), 0);
 		if (num < 0 && zeros != 0 && av[x][zeros - 1])

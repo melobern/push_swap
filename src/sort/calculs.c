@@ -6,10 +6,9 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:59:29 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/07 11:15:09 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:19:47 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -17,9 +16,9 @@ size_t	near(t_nodes_list *pile_a, t_nodes_list **pile_b)
 {
 	t_nodes_list	*a;
 	t_nodes_list	*b;
-	size_t nearest;
-	size_t diff;
-	size_t next_diff;
+	size_t			nearest;
+	size_t			diff;
+	size_t			next_diff;
 
 	if (!pile_a || !(*pile_b))
 		return (0);
@@ -43,7 +42,7 @@ size_t	near(t_nodes_list *pile_a, t_nodes_list **pile_b)
 size_t	calcul_pos(t_nodes_list *pile_a, t_nodes_list **pile_b)
 {
 	t_nodes_list	*b;
-	size_t nearest;
+	size_t			nearest;
 	size_t			position;
 
 	if (!(pile_a) || !(*pile_b))
@@ -63,18 +62,20 @@ size_t	calcul_pos(t_nodes_list *pile_a, t_nodes_list **pile_b)
 	return (position);
 }
 
-/* Diffère du final */
 void	calcul_cost(t_nodes_list **a, t_nodes_list **b, size_t len)
 {
 	t_nodes_list	*first;
 	t_nodes_list	*sec;
 
 	first = *a;
-	sec = (*a)->next;
 	first->cost = calcul_pos(*a, b);
-	sec->cost = calcul_pos(sec, b) + 1;
 	if (first->cost >= (len / 2))
 		first->cost = len - first->cost;
-	if (sec->cost >= (len / 2))
-		sec->cost = len + 1 - sec->cost;
+	sec = (*a)->next;
+	if (sec != NULL)
+	{
+		sec->cost = calcul_pos(sec, b);
+		if (sec->cost >= (len / 2))
+			sec->cost = len - sec->cost;
+	}
 }

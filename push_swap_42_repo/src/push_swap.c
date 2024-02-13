@@ -6,7 +6,7 @@
 /*   By: mbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:16:26 by mbernard          #+#    #+#             */
-/*   Updated: 2024/02/13 11:51:40 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:52:32 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	back_into_a(t_nodes_list **pile_a, t_nodes_list **pile_b)
 	}
 }
 
-static void	push_swap(t_nodes_list **pile_a, t_nodes_list **pile_b)
+static void	turk_swap(t_nodes_list **pile_a, t_nodes_list **pile_b)
 {
 	size_t	down;
 
@@ -69,10 +69,10 @@ int	main(int ac, char **av)
 			ft_putendl_fd(sa(&pile_a), 1);
 		else if (pile_a_len == 3)
 			sort_three(&pile_a);
-		else if (pile_a_len < 100)
-			push_swap(&pile_a, &pile_b);
+		else if (pile_a_len < 25)
+			turk_swap(&pile_a, &pile_b);
 		else
-			radix_sort(&pile_a, &pile_b);
+			radix_sort(&pile_a, &pile_b, pile_a_len);
 	}
 	free_pile(&pile_a);
 	free_pile(&pile_b);
