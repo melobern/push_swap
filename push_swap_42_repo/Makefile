@@ -44,7 +44,8 @@ all:	${NAME}
 libs:
 	$(MAKE) -C ${LIBFT_DIR}
 
-${LIBFT}: libs
+${LIBFT}: FORCE
+	libs
 
 ${NAME}: ${OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o $@
@@ -70,5 +71,7 @@ fclean: clean
 re:    fclean
 	${MAKE} ${NAME}
 
+FORCE:
+
 # ---------------------------------- Phony ----------------------------------- #
-.PHONY: all libs clean fclean re
+.PHONY: all libs clean fclean re FORCE
